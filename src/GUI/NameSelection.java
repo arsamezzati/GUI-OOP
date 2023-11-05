@@ -26,6 +26,7 @@ public class NameSelection implements ActionListener {
         okb.addActionListener(this);
         nameFrame.setLocationRelativeTo(null);
         nameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Set default close operation
+
         nameFrame.setVisible(true);
     }
 

@@ -20,6 +20,7 @@ public class Characters {
     public void checkStatus(){
         if (this.curHealth <= 0){
             this.status = false;
+            this.setCurHealth(0);
         }
     }
     public int getMaxHealth(){

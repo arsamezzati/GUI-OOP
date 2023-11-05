@@ -1,6 +1,6 @@
 package CharacterInfo;
 
-public class Player extends Characters{
+public class Player extends Characters implements CombatInterface{
     public Player(String name,int health,int damage){
         this.setName(name);
         this.setAttackDamage(damage);
@@ -24,6 +24,12 @@ public class Player extends Characters{
     }
     public void setXp(int enemyLevel){
         this.xp = this.xp + (enemyLevel*25);
+    }
+    @Override
+    public void attack(Characters c) {
+        if (this.getStatus()) {
+            c.setCurHealth(c.getCurHealth() - this.getAttackDamage());
+        }
     }
 
 

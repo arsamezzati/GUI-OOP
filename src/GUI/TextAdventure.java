@@ -32,11 +32,12 @@ public class TextAdventure extends JFrame implements ActionListener {
         // Setup GUI
         frame = new JFrame();
         textArea = new JTextArea();
+        // buttons ( explore )
         exploreButton = new JButton("Explore");
         quitButton = new JButton("Show Stats");
         exploreButton.addActionListener(this);
         quitButton.addActionListener(this);
-
+        // buttons ( event )
         yesButton = new JButton("Yes");
         noButton = new JButton("No");
         yesButton.addActionListener(this);
@@ -59,7 +60,7 @@ public class TextAdventure extends JFrame implements ActionListener {
         eventPanel.add(noButton);
 
 
-        characterInfoLabel = new CharacterLabel(null);
+        characterInfoLabel = new CharacterLabel(null,null);
         frame.add(characterInfoLabel, BorderLayout.NORTH);
 
         frame.setLocationRelativeTo(null);
@@ -91,13 +92,24 @@ public class TextAdventure extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == exploreButton) {
+            characterInfoLabel.updateCharacterInfo();
             String result = EventGenerator.trigger(this);
             textArea.append("\n"+result);
             this.textArea.setCaretPosition(this.textArea.getDocument().getLength());
         } else if (e.getSource() == quitButton) {
+            characterInfoLabel.updateCharacterInfo();
             textArea.append("You chose option 2.\n");
         }else if (e.getSource()==yesButton){
+
+            characterInfoLabel.updateCharacterInfo();
             Fight.start(player);
+            removePanel(eventPanel);
+            addPanel(explorePanel);
+        }else if(e.getSource()==noButton){
+
+            characterInfoLabel.updateCharacterInfo();
+            removePanel(eventPanel);
+            addPanel(explorePanel);
         }
     }
 
