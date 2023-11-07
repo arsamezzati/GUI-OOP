@@ -4,12 +4,14 @@ import CharacterInfo.*;
 import CharacterInfo.Enemies.Assassin;
 import GUI.CharacterLabel;
 import GUI.TextAdventure;
+import Game.EnemyGenerator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Fight extends JFrame implements ActionListener {
+public class Fight extends JFrame implements ActionListener,EventInterface {
     private Player player1;
     private Enemy enemy;
     private JFrame fFrame;
@@ -51,7 +53,7 @@ public class Fight extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
 
 
-        setVisible(true);
+
     }
     @Override
     public void actionPerformed(ActionEvent e){
@@ -61,6 +63,7 @@ public class Fight extends JFrame implements ActionListener {
             this.player1.checkStatus();
             this.enemy.checkStatus();
             characterInfoLabel.updateCharacterInfo();
+
             displayMessage("You dealt "+this.player1.getAttackDamage()+" Damage and received "+this.enemy.getAttackDamage()+" damage");
             if (!this.enemy.getStatus()){
                 attButton.setEnabled(false);
@@ -81,10 +84,12 @@ public class Fight extends JFrame implements ActionListener {
         game.removePanel(game.getExplorePanel());
         game.addPanel(game.getEventPanel());
         game.displayMessage("you found an enemy!");
+        Enemy e = EnemyGenerator.generateEnemy(game.getPlayer());
+        game.setEvent(new Fight(game.getPlayer(),e));
     }
-    public static void start(Player p){
-        Enemy e = new Assassin(1);
-        new Fight(p,e);
+    public void start(Player p){
+        this.setVisible(true);
+
 
     }
 }
