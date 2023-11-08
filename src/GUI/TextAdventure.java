@@ -44,7 +44,7 @@ public class TextAdventure extends JFrame implements ActionListener {
         textArea = new JTextArea();
         // buttons ( explore )
         exploreButton = new JButton("Explore");
-        quitButton = new JButton("Show Stats");
+        quitButton = new JButton("Inventory");
         exploreButton.addActionListener(this);
         quitButton.addActionListener(this);
         // buttons ( event )
