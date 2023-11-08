@@ -32,7 +32,7 @@ public class NameSelection implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Player p = new Player(this.nameSelection.getText(),200,30);
+        Player p = new Player(this.nameSelection.getText(),200,30,this.game);
         game.setPlayer(p);
         game.setVisible(true);
         game.showFrame();

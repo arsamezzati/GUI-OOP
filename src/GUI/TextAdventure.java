@@ -198,6 +198,9 @@ public class TextAdventure extends JFrame implements ActionListener {
     private Enemy peekNextEnemy() {
         return ((Dungeon) this.event).getSideEnemyList().peek();
     }
+    public void handleLevelUp(){
+        new LevelUp(this);
+    }
 
 
     public static void main(String[] args) {

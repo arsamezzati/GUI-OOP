@@ -58,10 +58,13 @@ public class Fight extends JFrame implements ActionListener,EventInterface {
     @Override
     public void actionPerformed(ActionEvent e){
         if (e.getSource()==attButton){
-            this.player1.attack(this.enemy);
-            this.enemy.attack(this.player1);
+            this.player1.dealDamage(this.enemy,this.player1.getAttackDamage());
+            this.enemy.dealDamage(this.player1,this.enemy.getAttackDamage());
             this.player1.checkStatus();
             this.enemy.checkStatus();
+            if (!this.enemy.getStatus()){
+                this.player1.gainXp(this.enemy);
+            }
             characterInfoLabel.updateCharacterInfo();
 
             displayMessage("You dealt "+this.player1.getAttackDamage()+" Damage and received "+this.enemy.getAttackDamage()+" damage");
@@ -84,7 +87,7 @@ public class Fight extends JFrame implements ActionListener,EventInterface {
         game.removePanel(game.getExplorePanel());
         game.addPanel(game.getEventPanel());
         game.displayMessage("you found an enemy!");
-        Enemy e = EnemyGenerator.generateEnemy(game.getPlayer());
+        Enemy e = EnemyGenerator.generateEnemy(game.getPlayer(),game);
         game.setEvent(new Fight(game.getPlayer(),e));
     }
     public void start(Player p){

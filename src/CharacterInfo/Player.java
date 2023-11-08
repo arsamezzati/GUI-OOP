@@ -1,7 +1,9 @@
 package CharacterInfo;
 
+import GUI.TextAdventure;
+
 public class Player extends Characters implements CombatInterface{
-    public Player(String name,int health,int damage){
+    public Player(String name, int health, int damage, TextAdventure game){
         this.setName(name);
         this.setAttackDamage(damage);
         this.setMaxHealth(health);
@@ -10,6 +12,7 @@ public class Player extends Characters implements CombatInterface{
         this.setLevel(1);
         this.xp = 0;
         this.maxXp = 50;
+        this.setGame(game);
     }
     private int xp;
     private int maxXp;
@@ -25,10 +28,30 @@ public class Player extends Characters implements CombatInterface{
     public void setXp(int enemyLevel){
         this.xp = this.xp + (enemyLevel*25);
     }
+    public void gainXp(Enemy e){
+        if(!e.getStatus()){
+            this.setXp(e.getLevel());
+            if (this.maxXp <= this.xp) {
+                this.xp = 0;
+                this.setLevel(this.getLevel()+1);
+                this.getGame().handleLevelUp();
+
+            }
+
+        }
+    }
+    public void increaseHealth(){
+        this.setMaxHealth(this.getMaxHealth()+15);
+        this.setCurHealth(this.getMaxHealth());
+    }
+    public void increaseAttack(){
+        this.setAttackDamage(this.getAttackDamage()+5);
+        this.setCurHealth(this.getMaxHealth());
+    }
     @Override
     public void attack(Characters c) {
         if (this.getStatus()) {
-            c.setCurHealth(c.getCurHealth() - this.getAttackDamage());
+            this.dealDamage(c,this.getAttackDamage());
         }
     }
 

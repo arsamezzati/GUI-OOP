@@ -30,12 +30,14 @@ public class CharacterLabel extends JLabel {
     public void updateCharacterInfo() {
         StringBuilder info = new StringBuilder();
         if (player != null) {
-            info.append(String.format("%s | Level: %d | Damage: %d | Health: %d / %d",
+            info.append(String.format("%s | Level: %d | Damage: %d | Health: %d / %d | XP: %d / %d" ,
                     player.getName(),
                     player.getLevel(),
                     player.getAttackDamage(),
                     player.getCurHealth(),
-                    player.getMaxHealth()));
+                    player.getMaxHealth(),
+                    player.getXp(),
+                    player.getMaxXp()));
         }
         if (enemy != null) {  // If there is an enemy, append its information
             info.append(String.format("     Enemy: %s | Level: %d | Damage: %d | Health: %d / %d",

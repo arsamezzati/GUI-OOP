@@ -1,6 +1,9 @@
 package CharacterInfo;
 
+import GUI.TextAdventure;
+
 public class Characters {
+    private TextAdventure game;
     private int level;
     public int getLevel(){
         return this.level;
@@ -58,5 +61,33 @@ public class Characters {
 
         System.out.print("Health: "+this.getCurHealth()+"/"+this.getMaxHealth());
         System.out.print("Damage: " + this.getAttackDamage()+"\n");
+    }
+    public void setGame(TextAdventure game){
+        this.game = game;
+    }
+    public TextAdventure getGame(){
+        return this.game;
+    }
+    private void receiveDamage(int damage){
+        this.curHealth -= damage;
+        if (this.curHealth <= 0){
+            this.die();
+        }
+    }
+    private void die(){
+        if (this.getClass()== Player.class){
+            this.setStatus(false);
+            System.exit(0);
+        } else if (this.getClass() == Enemy.class) {
+            this.setStatus(false);
+            this.game.displayMessage("you defeated "+this.getName());
+            
+        }
+    }
+    public void handleReceiveDamage(int damage){
+        this.receiveDamage(damage);
+    }
+    public void dealDamage(Characters target,int damage){
+        target.handleReceiveDamage(damage);
     }
 }

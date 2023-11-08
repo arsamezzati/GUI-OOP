@@ -64,11 +64,11 @@ public class Dungeon implements EventInterface {
     }
 
     public void randomGen(Player p){
-        Enemy e1 = EnemyGenerator.generateEnemy(p);
+        Enemy e1 = EnemyGenerator.generateEnemy(p,this.game);
 
-        Enemy e2 = EnemyGenerator.generateEnemy(p);
+        Enemy e2 = EnemyGenerator.generateEnemy(p,this.game);
 
-        Enemy e3 = EnemyGenerator.generateEnemy(p);
+        Enemy e3 = EnemyGenerator.generateEnemy(p,this.game);
 
         this.sideEnemyList.offer(e1);
         this.sideEnemyList.offer(e2);
