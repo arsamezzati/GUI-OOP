@@ -1,7 +1,7 @@
 package Items;
 
 
-public class Item <T> implements Equippable{
+public class Item <T> {
     private T attribute;
     private String name;
     public String getName(){

@@ -1,9 +1,9 @@
 package Items;
 
-public class Weapon extends ItemStats{
-    public Weapon(String name,int attack){
-        this.setName(name);
-        this.setAttackDamge(attack);
+public class Weapon<T> extends Item<T>{
+    public Weapon(String name,T attribute,int attack){
+        super(name,attribute);
+        this.setAttackDamage(attack);
         this.setHealth(0);
     }
 }
