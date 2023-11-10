@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LevelUp {
-    private TextAdventure game;
+    private final TextAdventure game;
     private JFrame frame;
     private JPanel mainPanel, bottomPanel;
     private JRadioButton optionButton1, optionButton2;
