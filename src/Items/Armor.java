@@ -1,8 +1,8 @@
 package Items;
 
-public class Armor<T> extends Item<T>{
-    public  Armor(String name,T attribute,int health){
-        super(name,attribute);
+public class Armor<T> extends Item{
+    public  Armor(String name,int health){
+        super(name);
         this.setHealth(health);
         this.setAttackDamage(0);
     }
