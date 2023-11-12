@@ -1,6 +1,8 @@
 package CharacterInfo;
 
 import GUI.TextAdventure;
+import Items.Inventory;
+import Items.Item;
 
 public class Player extends Characters implements CombatInterface{
     public Player(String name, int health, int damage, TextAdventure game){
@@ -13,6 +15,12 @@ public class Player extends Characters implements CombatInterface{
         this.xp = 0;
         this.maxXp = 50;
         this.setGame(game);
+        this.inventory = new Inventory<Item>(50,game);
+
+    }
+    private final Inventory<Item> inventory;
+    public Inventory<Item> getInventory(){
+        return this.inventory;
     }
     private int xp;
     private int maxXp;

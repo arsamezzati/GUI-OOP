@@ -4,6 +4,6 @@ import Items.Armor;
 
 public class Cuirass extends Armor {
     public Cuirass(String name, int health, int level) {
-        super(name,"Health" ,health + level);
+        super(name,health + level);
     }
 }

@@ -122,7 +122,8 @@ public class TextAdventure extends JFrame implements ActionListener {
             textArea.append("\n" + result);
         } else if (source == quitButton) {
             characterInfoLabel.updateCharacterInfo();
-            // Assuming the quitButton is meant to show player stats
+            this.player.getInventory().getInvGui().turnOnVisibility();
+
             displayPlayerStats();
         } else if (source == yesButton) {
             handleYesButton();

@@ -1,8 +1,8 @@
 package Items;
 
 
-public class Item <T> {
-    private T attribute;
+public class Item  {
+
     private String name;
     public String getName(){
         return this.name;
@@ -22,9 +22,9 @@ public class Item <T> {
         return this.health;
     }
     public void setHealth(int amount) { this.health = amount; }
-    public Item(String name, T attribute){
+    public Item(String name){
         this.name = name;
-        this.attribute = attribute;
+
     }
 
 }

@@ -1,12 +1,22 @@
 package Items;
+import GUI.InventoryBox;
+import GUI.TextAdventure;
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 public class Inventory <T extends Item>{
     private List<T> items;
     private int capacity;
-    public Inventory(int capacity){
+    public Inventory(int capacity, TextAdventure game){
         this.capacity = capacity;
         this.items = new ArrayList<>(capacity);
+        invGui = new InventoryBox(game);
+
+    }
+    private InventoryBox invGui;
+    public InventoryBox getInvGui(){
+        return this.invGui;
     }
     public boolean addItem(T item){
         if (items.size() < capacity){
