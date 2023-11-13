@@ -10,11 +10,11 @@ public class Armor extends Item{
     }
     private static final String[] armorList = {"Bronze Armor","Silver Armor","Gold Armor"};
 
-    public Armor handleTreasureEvent(){
+    public static Armor handleTreasureEvent(){
         return generateArmor();
     }
 
-    private Armor generateArmor(){
+    private static Armor generateArmor(){
         Random random = new Random();
         int r = random.nextInt(armorList.length);
         return new Armor(armorList[r],150);
