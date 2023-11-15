@@ -5,6 +5,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import Items.Armor;
 public class Inventory <T extends Item>{
     private List<T> items;
     private int capacity;
@@ -31,6 +32,10 @@ public class Inventory <T extends Item>{
             return true;
         }
         return false;
+    }
+    public void addRandomArmor() {
+        Armor randomArmor = Armor.handleTreasureEvent();
+        addItem(randomArmor);
     }
 
     public List<T> getItems() {
