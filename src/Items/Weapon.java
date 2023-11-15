@@ -34,4 +34,7 @@ public class Weapon extends Item<DamageGenericClass> implements Equippable{
         return new Weapon(weaponList[r],25);
 
     }
+    public int dastan(){
+        return 5;
+    }
 }
