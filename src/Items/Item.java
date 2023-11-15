@@ -1,27 +1,27 @@
 package Items;
 
 
-public class Item  {
+public class Item<T>{
 
     private String name;
+    private T attribute;
+
+
+    public T getAttribute(){
+        return this.attribute;
+    }
+    public void setAttribute(T attribute){
+        this.attribute = attribute;
+    }
+
     public String getName(){
         return this.name;
     }
     public void setName(String name){
         this.name = name;
     }
-    private int attackDamage;
-    public int getAttackDamage(){
-        return this.attackDamage;
-    }
-    public void setAttackDamage(int amount){
-        this.attackDamage = amount;
-    }
-    private int health;
-    public int getHealth(){
-        return this.health;
-    }
-    public void setHealth(int amount) { this.health = amount; }
+
+
     public Item(String name){
         this.name = name;
 

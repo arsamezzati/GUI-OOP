@@ -80,15 +80,13 @@ public class LevelUp {
     }
 
     private void applyChangesForOption1() {
-        // Implement your logic for applying changes for option 1
-        // For example, increasing the player's health
+
         game.getPlayer().increaseHealth();
         game.displayMessage("Health increased!");
     }
 
     private void applyChangesForOption2() {
-        // Implement your logic for applying changes for option 2
-        // For example, increasing the player's attack
+
         game.getPlayer().increaseAttack();
         game.displayMessage("Attack increased!");
     }

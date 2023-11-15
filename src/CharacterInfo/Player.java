@@ -1,6 +1,7 @@
 package CharacterInfo;
 
 import GUI.TextAdventure;
+import Items.Equippable;
 import Items.Inventory;
 import Items.Item;
 
@@ -15,11 +16,12 @@ public class Player extends Characters implements CombatInterface{
         this.xp = 0;
         this.maxXp = 50;
         this.setGame(game);
-        this.inventory = new Inventory<Item>(50,game);
+        this.inventory = new Inventory<Item<?>>(50,game);
 
     }
-    private final Inventory<Item> inventory;
-    public Inventory<Item> getInventory(){
+
+    private final Inventory<Item<?>> inventory;
+    public Inventory<Item<?>> getInventory(){
         return this.inventory;
     }
     private int xp;
@@ -55,6 +57,10 @@ public class Player extends Characters implements CombatInterface{
     public void increaseAttack(){
         this.setAttackDamage(this.getAttackDamage()+5);
         this.setCurHealth(this.getMaxHealth());
+    }
+    public void unequipItem(Equippable item){
+        item.handleUnequip(this,this.inventory);
+
     }
     @Override
     public void attack(Characters c) {

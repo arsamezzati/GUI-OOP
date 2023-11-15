@@ -1,9 +1,9 @@
 package Items;
+import CharacterInfo.Player;
 import Items.Item;
 public interface Equippable {
-        int getAttackDamage();
-        void setAttackDamage(int amount);
-        int getHealth();
-        void setHealth(int amount);
+        void handleEquip(Player p);
+        void handleUnequip(Player p,Inventory<Item<?>> inv);
+
 
 }
