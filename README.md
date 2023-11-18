@@ -114,6 +114,56 @@ Inheritance is a basic functionality of OOP, making it possible for classes to h
 It also enables subclasses to inherit methods and attributes, while having their own unique ones. This leads to better reusability and having a class hierarchy, enables subclasses to inherit
 the common features of the parent class and have their own new ones.
 This [Class Diagram](https://drive.google.com/file/d/1pREhIImt_T_pgyoBpxXL3ohMbrbgai41/view?usp=sharing) shows most of the classes and inheritances in our code.
+Dotted lines mean the classes implement an interface and normal lines show inheritance.
+
+## Abstract Data Type
+an ADT is a type of Data that can only be accessed through a specified interface, helping understandability of the user.
+2 key aspects of ADT is the use of Information hiding and Encapsulation.
+### Encapsulation
+Encapsulation is a fundamental concept in OOP. It refers to the bundling of data with the methods that operate on that data. Encapsulation restricts direct access to some of an object's attributes and methods, which is a way of preventing interference and misuse of the methods and data.
+In our code we used Encapsulation in every class and one of the examples is shown below.
+```java
+public class Characters {
+    private TextAdventure game;
+    private int level;
+    public int getLevel(){
+        return this.level;
+    }
+    public void setLevel(int amount){
+        this.level = amount;
+    }
+}
+```
+### Information Hiding
+Information hiding is closely related to encapsulation, but it focuses more on hiding the internal state and functionalities of an object, so that the implementation details are not exposed to the outside. This concept is used in modular programming, as it allows changes to be made to the internal implementation of a class without affecting other parts of a program.
+Here is some examples of Information Hiding in our code.
+```java
+public void handleEquip(Player p){
+        p.setAttackDamage(p.getAttackDamage()+this.getAttribute().getValue());
+        p.setEquippedWeapon(this);
+    }
+    public void handleUnequip(Player p,Inventory<Item<?>> inv){
+        p.setAttackDamage(p.getAttackDamage() - p.getEquippedWeapon().getAttribute().getValue());
+        p.getInventory().getInvGui().removeItemFromInventory(p.getEquippedWeapon());
+    }
+
+```
+In this example, when the player clicks on the Equip button, it calls the handleEquip method which will set the equipped item of the player and changes the related attributes according to the Item.
+```java
+public class Weapon extends Item<DamageGenericClass> implements Equippable{
+    public static Weapon handleTreasureEvent(Player p){
+            return generateWeapon(p);
+        }
+    private static Weapon generateWeapon(Player p){
+            Random random = new Random();
+            int r = random.nextInt(weaponList.length);
+            return new Weapon(weaponList[r],p.getLevel()+5);
+    
+        }
+}
+```
+In this example, when a treasure is openned in the game, the handleTreasureEvent method is called which will then call the private generateWeapon method.
+in this example the information hiding is completely internal, the private method wont be exposed to other classes and instead we use the handler to call it.
 
 
 
