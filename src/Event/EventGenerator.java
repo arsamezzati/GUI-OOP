@@ -18,7 +18,9 @@ public class EventGenerator{
             case "dungeon":
                 Dungeon.trigger(game);
                 return "you found a dungeon";
-            case "treasure": return "you found big ol' treasure";
+            case "treasure":
+                game.setEvent(Treasure.trigger(game));
+                return "Would you like to open it?";
             default:
                 return "you didnt find anything";
 

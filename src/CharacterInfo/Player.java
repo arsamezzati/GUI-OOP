@@ -1,9 +1,7 @@
 package CharacterInfo;
 
 import GUI.TextAdventure;
-import Items.Equippable;
-import Items.Inventory;
-import Items.Item;
+import Items.*;
 
 public class Player extends Characters implements CombatInterface{
     public Player(String name, int health, int damage, TextAdventure game){
@@ -18,6 +16,20 @@ public class Player extends Characters implements CombatInterface{
         this.setGame(game);
         this.inventory = new Inventory<Item<?>>(50,game);
 
+    }
+    private Weapon equippedWeapon;
+    public void setEquippedWeapon(Weapon weapon){
+        this.equippedWeapon = weapon;
+    }
+    public Weapon getEquippedWeapon(){
+        return this.equippedWeapon;
+    }
+    private Armor equippedArmor;
+    public void setEquippedArmor(Armor armor){
+        this.equippedArmor = armor;
+    }
+    public Armor getEquippedArmor(){
+        return this.equippedArmor;
     }
 
     private final Inventory<Item<?>> inventory;
@@ -61,6 +73,13 @@ public class Player extends Characters implements CombatInterface{
     public void unequipItem(Equippable item){
         item.handleUnequip(this,this.inventory);
 
+    }
+    public void equipItem(Equippable item){
+        item.handleEquip(this);
+    }
+    public void equipItem(Equippable firstItem, Equippable secondItem){
+        firstItem.handleEquip(this);
+        secondItem.handleEquip(this);
     }
     @Override
     public void attack(Characters c) {

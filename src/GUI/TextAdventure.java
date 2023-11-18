@@ -122,6 +122,7 @@ public class TextAdventure extends JFrame implements ActionListener {
             textArea.append("\n" + result);
         } else if (source == quitButton) {
             characterInfoLabel.updateCharacterInfo();
+
             this.player.getInventory().getInvGui().turnOnVisibility();
 
             displayPlayerStats();
