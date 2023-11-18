@@ -1,10 +1,10 @@
-#The Project
-###What is the Project for?
+# The Project
+### What is the Project for?
 This is a school project by Arsam Ezzati and Hila Kargar Masouleh for OOP course taught by Professor Distefano in University of Messina.
-##What is the project?
+## What is the project?
 In this Project we tried to implement all of OOP design principles through Java that we were taught by our Professor into the project and ship it as a whole.
 Our Project is a Text based dungeon crawler that has some RPG aspects to it like level ups, different equipment and more.
-###What we used?
+### What we used?
 we mostly used vanilla Java and Swing for the GUI which is pretty basic
 ## Polymorphism
 Polymorphism is a core concept in OOP which refers to the ability of a class or interface to represent multiple forms or types which leads to a cleaner
