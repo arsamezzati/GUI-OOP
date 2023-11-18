@@ -27,7 +27,7 @@ public class Weapon extends Item<DamageGenericClass> implements Equippable{
 
     }
     public void handleUnequip(Player p,Inventory<Item<?>> inv){
-        p.setAttackDamage(p.getAttackDamage() + p.getEquippedWeapon().getAttribute().getValue());
+        p.setAttackDamage(p.getAttackDamage() - p.getEquippedWeapon().getAttribute().getValue());
         p.getInventory().getInvGui().removeItemFromInventory(p.getEquippedWeapon());
     }
     private static Weapon generateWeapon(Player p){
