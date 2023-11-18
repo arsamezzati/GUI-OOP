@@ -109,6 +109,12 @@ public void equipItem(Equippable item){
         secondItem.handleEquip(this);
     }
 ```
+## Inheritance
+Inheritance is a basic functionality of OOP, making it possible for classes to have children known as Subclasses or Childclasses and Parentclasses or Superclasses.
+It also enables subclasses to inherit methods and attributes, while having their own unique ones. This leads to better reusability and having a class hierarchy, enables subclasses to inherit
+the common features of the parent class and have their own new ones.
+This ![Class Diagram]([link-to-your-diagram-image](https://drive.google.com/file/d/1pREhIImt_T_pgyoBpxXL3ohMbrbgai41/view?usp=sharing)https://drive.google.com/file/d/1pREhIImt_T_pgyoBpxXL3ohMbrbgai41/view?usp=sharing) shows most of the classes and inheritances in our code.
+
 
 
 
