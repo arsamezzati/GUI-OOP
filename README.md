@@ -31,5 +31,85 @@ In this section we used <T extends ItemTypes> which means that attribute would o
 this will clarify the type of the item ( weapon/armor ).
 the value of attribute is damage if the item is a weapon and health if the item is an armor.
 ### Inclusion ( Overriding )
+Polymorphism by inclusion is when a class can be treated as an object of another class or type, which is achieved when the class in a subclass of a parentclass or when it implements an interface.
+this can achieve multiple purposes such as having the same method doing different things in different classes.
+```java
+public class Dungeon implements EventInterface {
+@Override
+    public void start(Player p){
+        this.randomGen(this.player);
+
+
+    }
+}
+public class Treasure implements EventInterface{
+@Override
+    public void start(Player p){
+        Random random = new Random();
+        int r = random.nextInt(2);
+        Item<?> newItem;
+        if (r == 0){
+            newItem = Armor.handleTreasureEvent(p);
+            System.out.println(newItem.getAttribute().getClass().getName());
+
+        }else{
+           newItem = Weapon.handleTreasureEvent(p);
+           System.out.println(newItem.getAttribute().getClass().getName());
+
+
+        }
+        game.getPlayer().getInventory().getInvGui().handleNewItem(newItem);
+        game.displayMessage("You found one "+newItem.getName());
+        game.getPlayer().getInventory().addItem(newItem);
+
+    }
+}
+public class Fight extends JFrame implements ActionListener,EventInterface {
+@Override
+    public void start(Player p){
+
+        this.setVisible(true);
+
+
+    }
+}
+```
+In this example, EventInterface is an interface and all events implement it, they all have the start method but they do different things.
+this will make it possible for the variable event to hold all of them in TextAdventure class ( which is the main class ).
+this variable sets the current event of the game.
+```java
+private EventInterface event;
+```
+### Overloading
+This type of polymorphism make it possible to have multiple of the same method which takes different amount or type of parameters.
+```java
+public class InventoryBox implements ActionListener, ItemListener {
+    private void handleEquippingItems() {
+        ArrayList<Equippable> selectedItems = getSelectedItems();
+        Player player = game.getPlayer(); // Assuming this is how you get the player instance
+
+        if (selectedItems.size() == 1) {
+            player.equipItem(selectedItems.get(0));
+            removeItemFromInventory(selectedItems.get(0));
+        } else if (selectedItems.size() == 2) {
+            player.equipItem(selectedItems.get(0), selectedItems.get(1));
+            removeItemFromInventory(selectedItems.get(0));
+            removeItemFromInventory(selectedItems.get(1));
+        }
+    }
+}
+```
+In this example, If the player chooses to equip only 1 item, the 1-parameter method is called and if they decided to equip 2 items ( which is the maximum ), it uses the 2-parameter version of the method.
+```java
+public void equipItem(Equippable item){
+        item.handleEquip(this);
+    }
+    public void equipItem(Equippable firstItem, Equippable secondItem){
+        firstItem.handleEquip(this);
+        secondItem.handleEquip(this);
+    }
+```
+
+
 
 
