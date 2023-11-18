@@ -4,9 +4,9 @@
 2.[What is the Project?](#what-is-the-project?)
 3.[What we used?](#what=we-used?)
 4.[Polymorphism](#polymorphism)
-    4.1.[Parametric Polymorphism](#parametric-polymorphism)
-    4.2.[Inclusion ( Overriding )](#inclusion-(overriding))
-    4.3.[Overloading](#overloading)
+4.1.[Parametric Polymorphism](#parametric-polymorphism)
+4.2.[Inclusion ( Overriding )](#inclusion-(overriding))
+4.3.[Overloading](#overloading)
 5.[Inheritance](#inheritance)
 6.[Information Hiding](#information-hiding)
 ### What is the Project for?
