@@ -1,4 +1,6 @@
 # The Project
+## Table of Contents
+1.[Polymorphism](#polymorphism)
 ### What is the Project for?
 This is a school project by Arsam Ezzati and Hila Kargar Masouleh for OOP course taught by Professor Distefano in University of Messina.
 ## What is the project?
