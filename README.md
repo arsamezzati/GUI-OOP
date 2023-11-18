@@ -1,14 +1,16 @@
 # The Project
+
 ## Table of Contents
 1.[What is the Project for?](#what-is-the-project-for?)
 2.[What is the Project?](#what-is-the-project?)
 3.[What we used?](#what=we-used?)
 4.[Polymorphism](#polymorphism)
-4.1.[Parametric Polymorphism](#parametric-polymorphism)
-4.2.[Inclusion ( Overriding )](#inclusion-(overriding))
-4.3.[Overloading](#overloading)
+    4.1.[Parametric Polymorphism](#parametric-polymorphism)
+    4.2.[Inclusion ( Overriding )](#inclusion-(overriding))
+    4.3.[Overloading](#overloading)
 5.[Inheritance](#inheritance)
 6.[Information Hiding](#information-hiding)
+
 ### What is the Project for?
 This is a school project by Arsam Ezzati and Hila Kargar Masouleh for OOP course taught by Professor Distefano in University of Messina.
 ## What is the project?
