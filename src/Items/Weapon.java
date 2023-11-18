@@ -17,24 +17,23 @@ public class Weapon extends Item<DamageGenericClass> implements Equippable{
     }
     private static final String[] weaponList = {"Axe","Dagger","Mace","Polearm","Spear","Sword"};
 
-    public static Weapon handleTreasureEvent(){
-        return generateWeapon();
+    public static Weapon handleTreasureEvent(Player p){
+        return generateWeapon(p);
     }
     public void handleEquip(Player p){
-        p.setMaxHealth(p.getAttackDamage()+this.getAttribute().getValue());
+        p.setAttackDamage(p.getAttackDamage()+this.getAttribute().getValue());
+        p.setEquippedWeapon(this);
 
 
     }
     public void handleUnequip(Player p,Inventory<Item<?>> inv){
-        p.setAttackDamage(p.getAttackDamage()-this.getAttribute().getValue());
+        p.setAttackDamage(p.getAttackDamage() + p.getEquippedWeapon().getAttribute().getValue());
+        p.getInventory().getInvGui().removeItemFromInventory(p.getEquippedWeapon());
     }
-    private static Weapon generateWeapon(){
+    private static Weapon generateWeapon(Player p){
         Random random = new Random();
         int r = random.nextInt(weaponList.length);
-        return new Weapon(weaponList[r],25);
+        return new Weapon(weaponList[r],p.getLevel()+5);
 
-    }
-    public int dastan(){
-        return 5;
     }
 }
