@@ -17,23 +17,28 @@ public class Armor extends Item<HealthGenericClass> implements Equippable{
     }
     private static final String[] armorList = {"Bronze Armor","Silver Armor","Gold Armor"};
 
-    public static Armor handleTreasureEvent(){
-        return generateArmor();
+    public static Armor handleTreasureEvent(Player p){
+        return generateArmor(p);
     }
 
-    private static Armor generateArmor(){
+    private static Armor generateArmor(Player p){
+
         Random random = new Random();
         int r = random.nextInt(armorList.length);
-        return new Armor(armorList[r],150);
+        return new Armor(armorList[r],p.getLevel()+35);
 
     }
     public void handleEquip(Player p){
+        p.setMaxHealth(p.getMaxHealth() + this.getAttribute().getValue());
+        p.getInventory().getInvGui().removeItemFromInventory(this);
         p.setMaxHealth(p.getMaxHealth()+this.getAttribute().getValue());
+        p.setEquippedArmor(this);
+
 
 
     }
     public void handleUnequip(Player p,Inventory<Item<?>> inv){
-        p.setMaxHealth(p.getMaxHealth()-this.getAttribute().getValue());
+        p.setMaxHealth(p.getMaxHealth()-p.getEquippedArmor().getAttribute().getValue());
 
         if (p.getCurHealth() > p.getMaxHealth()){
             p.setCurHealth(p.getMaxHealth());

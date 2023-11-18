@@ -8,6 +8,9 @@ import java.util.List;
 import Items.Armor;
 public class Inventory <T extends Item<?>>{
     private List<T> items;
+    public List<T> getItemsList(){
+        return items;
+    }
     private int capacity;
     public Inventory(int capacity, TextAdventure game){
         this.capacity = capacity;
@@ -33,10 +36,7 @@ public class Inventory <T extends Item<?>>{
         }
         return false;
     }
-    public void addRandomArmor() {
-        Armor randomArmor = Armor.handleTreasureEvent();
 
-    }
 
     public List<T> getItems() {
         return items;
