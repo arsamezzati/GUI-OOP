@@ -9,7 +9,12 @@
     4.2.[Inclusion ( Overriding )](#inclusion-(overriding)).  
     4.3.[Overloading](#overloading).  
 5.[Inheritance](#inheritance).  
-6.[Information Hiding](#information-hiding).  
+6.[Abstract Data Type](#abstract-data-type).  
+    6.1.[Encapsulation](#encapsulation).  
+    6.2.[Information Hiding](#information-hiding).  
+7.[Aggregation](#aggregation).  
+8.[Composition](#composition).  
+
 
 ### What is the Project for?
 This is a school project by Arsam Ezzati and Hila Kargar Masouleh for OOP course taught by Professor Distefano in University of Messina.
