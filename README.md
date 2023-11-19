@@ -1,15 +1,20 @@
 # The Project
 
 ## Table of Contents
-1.[What is the Project for?](#what-is-the-project-for?)
-2.[What is the Project?](#what-is-the-project?)
-3.[What we used?](#what=we-used?)
-4.[Polymorphism](#polymorphism)
-    4.1.[Parametric Polymorphism](#parametric-polymorphism)
-    4.2.[Inclusion ( Overriding )](#inclusion-(overriding))
-    4.3.[Overloading](#overloading)
-5.[Inheritance](#inheritance)
-6.[Information Hiding](#information-hiding)
+1.[What is the Project for?](#what-is-the-project-for?).  
+2.[What is the Project?](#what-is-the-project?).  
+3.[What we used?](#what=we-used?).  
+4.[Polymorphism](#polymorphism).  
+    4.1.[Parametric Polymorphism](#parametric-polymorphism).  
+    4.2.[Inclusion ( Overriding )](#inclusion-(overriding)).  
+    4.3.[Overloading](#overloading).  
+5.[Inheritance](#inheritance).  
+6.[Abstract Data Type](#abstract-data-type).  
+    6.1.[Encapsulation](#encapsulation).  
+    6.2.[Information Hiding](#information-hiding).  
+7.[Aggregation](#aggregation).  
+8.[Composition](#composition).  
+
 
 ### What is the Project for?
 This is a school project by Arsam Ezzati and Hila Kargar Masouleh for OOP course taught by Professor Distefano in University of Messina.
@@ -176,6 +181,44 @@ public class Weapon extends Item<DamageGenericClass> implements Equippable{
 ```
 In this example, when a treasure is openned in the game, the handleTreasureEvent method is called which will then call the private generateWeapon method.
 in this example the information hiding is completely internal, the private method wont be exposed to other classes and instead we use the handler to call it.
+## Aggregation
+Aggregation is a form of relation in OOP. It represents a relationship between two classes where they have a "has-a" relationship, but the parts can exist independently of the aggregate. Aggregation is often used to indicate that one class is a collection or a container of other classes, but those contained classes do not strictly depend on the lifecycle of the container.
+In our code we used aggregation a lot when a class has an instance of another one. here is an example.
+```java
+public class Fight extends JFrame implements ActionListener,EventInterface {
+    private Player player1;
+    private Enemy enemy;
+}
+```
+in this example, the Fight class has a Player and an Enemy object inside of it as an attribute, but the lifecycle of those objects are not bound to te lifecycle of Fight Object.
+When the fight is ended, the Fight object is destroyed but the player object is still in the game and can continue playing it.
+here is another example.
+```java
+public Player(String name, int health, int damage, TextAdventure game){
+        
+        this.setGame(game);
+
+    }
+
+```
+We also used Aggregation in Player class by including "game" attribute in Player class.
+
+## Composition
+Composition can be defined as a more restrictive form of Aggregation with stricter bounds betweent he lifecycles, whereas the lifecycle of the contained class is strictly bound to the lifecycle of the container class,
+In composition, one class simply cease to exist or can not function properly when the container is destroyed. It can only be accessed properly through the interfaces that are defined in the container class.
+In our code we used Composition in the Player class and Inventory.
+```java
+public class Player extends Characters implements CombatInterface{
+    public Player(String name, int health, int damage, TextAdventure game){
+        this.inventory = new Inventory<Item<?>>(50,game);
+    }
+    public Inventory<Item<?>> getInventory(){
+        return this.inventory;
+    }
+}
+```
+In this example, the only way you can get access to the Inventor class is through the public method "getInventory". and the Inventory object is created in the Player constrctor, which means the Inventory simply cant  
+function or be accessed without the existance of the Player class.
 
 
 
