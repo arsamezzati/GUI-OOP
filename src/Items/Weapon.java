@@ -23,8 +23,6 @@ public class Weapon extends Item<DamageGenericClass> implements Equippable{
     public void handleEquip(Player p){
         p.setAttackDamage(p.getAttackDamage()+this.getAttribute().getValue());
         p.setEquippedWeapon(this);
-
-
     }
     public void handleUnequip(Player p,Inventory<Item<?>> inv){
         p.setAttackDamage(p.getAttackDamage() - p.getEquippedWeapon().getAttribute().getValue());

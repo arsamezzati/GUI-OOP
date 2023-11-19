@@ -25,7 +25,7 @@ public class TextAdventure extends JFrame implements ActionListener {
     }
     public void setPlayer(Player p){
         this.player = p;
-        characterInfoLabel.setPlayer(p);  // Update the character info label when the player is set
+        characterInfoLabel.setPlayer(p);
     }
     private CharacterLabel characterInfoLabel;
 
@@ -63,8 +63,8 @@ public class TextAdventure extends JFrame implements ActionListener {
         frame.setSize(800, 500);
         frame.setLayout(new BorderLayout());
 
-        JScrollPane scrollPane = new JScrollPane(textArea);  // Wrap textArea in a JScrollPane
-        frame.add(scrollPane, BorderLayout.CENTER);  // Add scrollPane to frame instead of textArea
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        frame.add(scrollPane, BorderLayout.CENTER);
 
         explorePanel = new JPanel();
         explorePanel.add(exploreButton);
@@ -140,9 +140,9 @@ public class TextAdventure extends JFrame implements ActionListener {
     }
 
     private void displayPlayerStats() {
-        // Display player stats here
+
         textArea.append("Displaying player stats...\n");
-        // Append player stats to text area
+
     }
 
     private void handleYesButton() {
@@ -153,7 +153,7 @@ public class TextAdventure extends JFrame implements ActionListener {
             if (!dungeon.getSideEnemyList().isEmpty()) {
                 displayMessage("You see a " + dungeon.seeNextEnemyList().getName() + ". Do you want to fight?");
                 removePanel(eventPanel);
-                addPanel(dungeonPanel); // Switch to dungeon panel with fight options
+                addPanel(dungeonPanel);
                 characterInfoLabel.updateCharacterInfo();
                 repaint();
             } else {
@@ -191,12 +191,10 @@ public class TextAdventure extends JFrame implements ActionListener {
         Fight f = new Fight(this.player,enemy);
         f.start(this.player);
 
-        // Here you would call the logic to handle the fight.
-        // This could be a method in this class or in another class that processes the fight.
+
     }
 
-    // Assuming Dungeon class has this method
-// If not, it should be added to return the next enemy without removing it from the queue
+
     private Enemy peekNextEnemy() {
         return ((Dungeon) this.event).getSideEnemyList().peek();
     }

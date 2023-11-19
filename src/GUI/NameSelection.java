@@ -13,19 +13,19 @@ public class NameSelection implements ActionListener {
     public NameSelection(TextAdventure game) {
         this.game = game;
 
-        nameFrame = new JFrame();  // Fixed: Removed type declaration
+        nameFrame = new JFrame();
         nameFrame.setSize(250, 100);
-        nameSelection = new JTextField();  // Fixed: Removed type declaration
+        nameSelection = new JTextField();
         nameSelection.setPreferredSize(new Dimension(100, 25));
         nameFrame.add(nameSelection, BorderLayout.NORTH);
 
         JPanel bp = new JPanel();
         nameFrame.add(bp, BorderLayout.SOUTH);
         JButton okb = new JButton("Set Name");
-        bp.add(okb);  // Removed BorderLayout.CENTER
+        bp.add(okb);
         okb.addActionListener(this);
         nameFrame.setLocationRelativeTo(null);
-        nameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Set default close operation
+        nameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         nameFrame.setVisible(true);
     }
