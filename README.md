@@ -6,7 +6,7 @@
 3.[What we used?](#what=we-used?).  
 4.[Polymorphism](#polymorphism).  
     4.1.[Parametric Polymorphism](#parametric-polymorphism).  
-    4.2.[Inclusion ( Overriding )](#inclusion-(overriding)).  
+    4.2.[Inclusion ( Overriding )](#inclusion-(subtyping)).  
     4.3.[Overloading](#overloading).  
 5.[Inheritance](#inheritance).  
 6.[Abstract Data Type](#abstract-data-type).  
@@ -47,9 +47,9 @@ public class Item<T extends ItemTypes>{
 In this section we used <T extends ItemTypes> which means that attribute would only accepts types that implement the ItemType interface meaning they all have a getValue method.
 this will clarify the type of the item ( weapon/armor ).
 the value of attribute is damage if the item is a weapon and health if the item is an armor.
-### Inclusion ( Overriding )
+### Inclusion ( Subtyping )
 Polymorphism by inclusion is when a class can be treated as an object of another class or type, which is achieved when the class in a subclass of a parentclass or when it implements an interface.
-this can achieve multiple purposes such as having the same method doing different things in different classes.
+this can achieve multiple purposes such as having the same method doing different things in different classes or having a Super type as the type of an attribute and using any of the subtypes ( and their specified methods ) instead.
 This type of polmorphism is mainly implemented by subclassing, where the subclasses override the methods that are already present in the parentclass or the interface which grants them more specified behavior.
 
 ```java
