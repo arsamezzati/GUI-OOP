@@ -45,7 +45,7 @@ public class Fight extends JFrame implements ActionListener,EventInterface {
 
 
         fPanel.add(attButton);
-        fPanel.add(spellButton);
+        //fPanel.add(spellButton);
         fPanel.add(runButton);
         add(fPanel, BorderLayout.SOUTH);
         characterInfoLabel = new CharacterLabel(this.player1,this.enemy);
@@ -70,6 +70,9 @@ public class Fight extends JFrame implements ActionListener,EventInterface {
             displayMessage("You dealt "+this.player1.getAttackDamage()+" Damage and received "+this.enemy.getAttackDamage()+" damage");
             if (!this.enemy.getStatus()){
                 attButton.setEnabled(false);
+                runButton.setEnabled(false);
+                this.displayMessage("You defeated "+this.enemy.getName()+" you gained "+this.enemy.getLevel()*25+" xp");
+                this.displayMessage("you can now close this window");
             }
 
 
