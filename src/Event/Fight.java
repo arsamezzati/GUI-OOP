@@ -90,7 +90,9 @@ public class Fight extends JFrame implements ActionListener,EventInterface {
         Enemy e = EnemyGenerator.generateEnemy(game.getPlayer(),game);
         game.setEvent(new Fight(game.getPlayer(),e));
     }
+    @Override
     public void start(Player p){
+
         this.setVisible(true);
 
 

@@ -23,6 +23,7 @@ public class Treasure implements EventInterface{
         game.repaint();
         return treasure;
     }
+    @Override
     public void start(Player p){
         Random random = new Random();
         int r = random.nextInt(2);

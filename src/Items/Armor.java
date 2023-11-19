@@ -34,8 +34,6 @@ public class Armor extends Item<HealthGenericClass> implements Equippable{
         p.setMaxHealth(p.getMaxHealth()+this.getAttribute().getValue());
         p.setEquippedArmor(this);
 
-
-
     }
     public void handleUnequip(Player p,Inventory<Item<?>> inv){
         p.setMaxHealth(p.getMaxHealth()-p.getEquippedArmor().getAttribute().getValue());

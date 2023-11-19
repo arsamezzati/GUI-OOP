@@ -82,6 +82,7 @@ public class Dungeon implements EventInterface {
         game.repaint();
 
     }
+    @Override
     public void start(Player p){
         this.randomGen(this.player);
 

@@ -1,7 +1,7 @@
 package Items;
 
 
-public class Item<T>{
+public class Item<T extends ItemTypes>{
 
     private String name;
     private T attribute;
