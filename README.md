@@ -50,6 +50,8 @@ the value of attribute is damage if the item is a weapon and health if the item 
 ### Inclusion ( Overriding )
 Polymorphism by inclusion is when a class can be treated as an object of another class or type, which is achieved when the class in a subclass of a parentclass or when it implements an interface.
 this can achieve multiple purposes such as having the same method doing different things in different classes.
+This type of polmorphism is mainly implemented by subclassing, where the subclasses override the methods that are already present in the parentclass or the interface which grants them more specified behavior.
+
 ```java
 public class Dungeon implements EventInterface {
 @Override
@@ -132,6 +134,31 @@ It also enables subclasses to inherit methods and attributes, while having their
 the common features of the parent class and have their own new ones.
 This [Class Diagram](https://drive.google.com/file/d/1pREhIImt_T_pgyoBpxXL3ohMbrbgai41/view?usp=sharing) shows most of the classes and inheritances in our code.
 Dotted lines mean the classes implement an interface and normal lines show inheritance.
+### A brief overlook on the classes
+``CharacterInfo``: this is the Package that holds Characters.
+`Characters`: This is the superclass to `Enemy` and `Player` which contains a variety of shared methods and attributes between them.  
+`Player`: This class is the user's character, which contains xp,inventory ( as Composition ) and many more attributes and methods in addition to its superclass `Characters` and sibling class `Enemy`.  
+`Enemy`: This is the superclass to many enemies (ig. Assassin,Goblin,etc). it's subclasses have different constructors with different value modifiers for health and damage.  
+``Event``: This is the Package that holds the events of the game.
+`Dungeon`: This class is a class that starts the dungeon event, it implements the `EventInterface` interface and has the ability to create 3 random enemies according to the player level.
+`Fight`: This is the class that starts the fight mechanic which is an event used in a random enemy encouner and dungeon. It has a unique GUI that allows the player to attack and get attacked. at the end of the fight, if the player comes out as the winner, he/she gains an amount of xp according to enemy level.  
+`Treasure`: This is the event that generates a random armor or weapon ( using a Random function ). and adds the item to the player's inventory.
+`EventInterface`: this Interface is implemented by all the events, which allows the game to hold is as the current event since the data type of the attribute is the same as the name of this interface, it also has the "start(Player p)" method which is overriden by all the classes that implement this interface.  
+``Game``: This package holds a number of classes that directly manage the game system.  
+`DamageGenerics/HealthGenerics`: These classes set the type of an item through parametric polymorphism and decide what kind of value the item gives ( damage / health ).  
+`EnemyGenrator`: This is the class that handles the system for generating random enemies, which is used in Dungeon and Random enemy encounter.  
+``GUI``: This package holds the main GUI classes and the main executable class of the project.  
+`CharacterLabel`: This class shows the stats of the player and when there's an enemy availabel it also shows their stats. It's used both in the main window and the fight window.  
+`InventoryBox`: This class is the GUI to the Inventory class.  
+`LevelUp`: This class appears whenever the player levels up, giving an increase health and an increase damage option to the player.  
+`NameSelection`: This is the first window that appears when the program is ran, which asks the user to enter the name they want to use for their character.  
+`TextAdventure`: This is the main executable class, which is also the main window.  
+``Items``: This package holds everything about Inventory and items.  
+`Equippable`: This interface is implemented by Armor and Weapon class which allows subtyping.  
+`Armor`: This is the class with the armor generator, handle equip item and names of the armors.  
+`Weapon`: This is the same as the armor class but for weapons.  
+`Inventory`: This is the class that is used as Composition in Player class, giving the player an inventory that can only be accessed THROUGH the playr.
+`Item`: This is the superclass of Armor and Weapon containing the common methods and attributes.  
 
 ## Abstract Data Type
 an ADT is a type of Data that can only be accessed through a specified interface, helping understandability of the user.
