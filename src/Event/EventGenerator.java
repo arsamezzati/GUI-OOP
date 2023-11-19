@@ -5,7 +5,7 @@ import GUI.TextAdventure;
 import java.util.ArrayList;
 import java.util.Random;
 public class EventGenerator{
-    private static String[] eventPool = {"enemy","dungeon","treasure","fountain"};
+    private static String[] eventPool = {"enemy","dungeon","treasure","fountain","nothing"};
 
     public static String trigger(TextAdventure game) {
         Random r = new Random();

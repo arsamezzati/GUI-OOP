@@ -12,8 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Fight extends JFrame implements ActionListener,EventInterface {
-    private Player player1;
-    private Enemy enemy;
+    private final Player player1;
+    private final Enemy enemy;
     private JFrame fFrame;
     private JPanel fPanel;
     private JButton attButton,spellButton,runButton;
