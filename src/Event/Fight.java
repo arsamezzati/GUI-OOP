@@ -38,9 +38,9 @@ public class Fight extends JFrame implements ActionListener,EventInterface {
         fPanel = new JPanel();
         attButton = new JButton("Attack");
         spellButton = new JButton("Use Spell");
-        runButton = new JButton("RUN!");
+        runButton = new JButton("Run Away!");
         attButton.addActionListener(this);
-        spellButton.addActionListener(this);
+        //spellButton.addActionListener(this);
         runButton.addActionListener(this);
 
 
@@ -73,6 +73,15 @@ public class Fight extends JFrame implements ActionListener,EventInterface {
             }
 
 
+
+        } else if (e.getSource()==runButton) {
+            this.enemy.attack(player1);
+            if (this.player1.getCurHealth()>this.player1.getMaxHealth()/2){
+                this.dispose();
+
+            } else {
+                this.displayMessage("You failed to run away!");
+            }
 
         }
 
