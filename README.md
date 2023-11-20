@@ -166,8 +166,8 @@ public void equipItem(Equippable item){
 ## Inheritance
 Inheritance is a basic functionality of OOP, making it possible for classes to have children known as Subclasses or Childclasses and Parentclasses or Superclasses.
 It also enables subclasses to inherit methods and attributes, while having their own unique ones. This leads to better reusability and having a class hierarchy, enables subclasses to inherit
-the common features of the parent class and have their own new ones.
-This [Class Diagram](https://drive.google.com/file/d/1pREhIImt_T_pgyoBpxXL3ohMbrbgai41/view?usp=sharing) shows most of the classes and inheritances in our code.
+the common features of the parent class and have their own new ones.  
+This [Class Diagram](https://drive.google.com/file/d/1Zws1gt2rwfyQ4njG2bGJbZFmkZZ8_3jw/view?usp=sharing) shows most of the classes and inheritances in our code.
 Dotted lines mean the classes implement an interface and normal lines show inheritance.
 ### A brief overlook on the classes
 ``CharacterInfo``: this is the Package that holds Characters.
