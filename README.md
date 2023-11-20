@@ -99,8 +99,37 @@ In this example, EventInterface is an interface and all events implement it, the
 this will make it possible for the variable event to hold all of them in TextAdventure class ( which is the main class ).
 this variable sets the current event of the game.
 ```java
-private EventInterface event;
+public class TextAdventure extends JFrame implements ActionListener {
+    private EventInterface event;
+    public void setEvent(EventInterface event){
+        this.event = event;
+
+    }
+}
+public class Dungeon implements EventInterface {
+    public static void trigger(TextAdventure game){
+        game.setEvent(new Dungeon(game.getPlayer(),game));
+        ....
+    }
+}
 ```
+In this example the use of EventInterface as the supertype of all events is showing the main functionality of polymorphism by inclusion, the attribute `event` has the supertype `EventInterface` which is an interface implemented by all the events,
+which eventually makes it possible for the attribute to hold different events.
+here is another example: 
+```java
+public class Player extends Characters implements CombatInterface{
+    public void equipItem(Equippable item){
+            item.handleEquip(this);
+    }
+}
+```
+In this example, player class has the method equipItem which takes in an `Equippable` type of object which is an interface implemented by all the equippable gear. This makes it possible for the method to be multi-functional and work for both armor and weapon.
+```java
+public class Fight extends JFrame implements ActionListener,EventInterface {
+    private final Enemy enemy;
+}
+```
+in this example, in the Fight class, there's an Enemy type variable which will take one enemy, all of them are subclasses of Enemy, for example Assassin and Goblin.
 ## More on Subtyping
 Subtyping is when a class can be treated as an instance of a parent class or interface, this will allow reusability and some unique functionalities. its a form of implementing Inclusion polymorphism and one of its uses with the help of inheritance.
 we used Subtyping in the examples above, and also in subclasses of Enemy, Items etc where one variable is set to hold a super type which will eventually take a subclass type and work perfectly fine.
@@ -286,6 +315,18 @@ The code catches the exception if it occurs, and jumps to the catch block, which
 ## Open Closed Principle
 Open closed principle is one of the main OOP design principles which suggests that the entities ( classes, interfaces, objects, etc ) should be closed to modification but open to extension. which means that the behavior of a module could be extended without changing the soruce code but with added new classes/modules or behaviors. It allows better management of the code.
 In our code we tried to achieve this design by including some subclasses like Enemy subclasses and Interfaces like `Equippable`, `ItemType` and `Armor` and `Weapon` so that if we ever decide to add new types of items, we could add them by implementing those Interfaces or adding new classes for example, to add new itemtype called "Potions" we could just add the class, implement the ItemType and not Equippable since potions are not equippable items.
+```java
+public interface Equippable {
+        void handleEquip(Player p);
+        void handleUnequip(Player p,Inventory<Item<?>> inv);
+
+
+}
+public class Weapon extends Item<DamageGenericClass> implements Equippable{
+}
+public class Armor extends Item<HealthGenericClass> implements Equippable{}
+```
+Here you can see that we have 2 types of Equippable items rightnow, Armor and Weapon. both implement the equippable interface and if we wanted to add a 3rd one, for example helmet, we just need to create the class and implement the interface and there is no need to edited already written code.
 
 
 
