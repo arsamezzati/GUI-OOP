@@ -15,6 +15,7 @@
 7.[Aggregation](#aggregation).  
 8.[Composition](#composition).  
 9.[Exception Handling](#exception-handling).  
+10.[Open Closed Principle](#open-closed-principle).  
 
 
 ### What is the Project for?
@@ -100,6 +101,10 @@ this variable sets the current event of the game.
 ```java
 private EventInterface event;
 ```
+## More on Subtyping
+Subtyping is when a class can be treated as an instance of a parent class or interface, this will allow reusability and some unique functionalities. its a form of implementing Inclusion polymorphism and one of its uses with the help of inheritance.
+we used Subtyping in the examples above, and also in subclasses of Enemy, Items etc where one variable is set to hold a super type which will eventually take a subclass type and work perfectly fine.
+
 ### Overloading
 This type of polymorphism make it possible to have multiple of the same method which takes different amount or type of parameters.
 ```java
@@ -278,6 +283,11 @@ public static Enemy generateEnemy(Player p, TextAdventure game) {
     }
 ```
 The code catches the exception if it occurs, and jumps to the catch block, which prints the error message for debugging purposes and returns an enemy, we chose Goblin as our default enemy in case of any errors.
+## Open Closed Principle
+Open closed principle is one of the main OOP design principles which suggests that the entities ( classes, interfaces, objects, etc ) should be closed to modification but open to extension. which means that the behavior of a module could be extended without changing the soruce code but with added new classes/modules or behaviors. It allows better management of the code.
+In our code we tried to achieve this design by including some subclasses like Enemy subclasses and Interfaces like `Equippable`, `ItemType` and `Armor` and `Weapon` so that if we ever decide to add new types of items, we could add them by implementing those Interfaces or adding new classes for example, to add new itemtype called "Potions" we could just add the class, implement the ItemType and not Equippable since potions are not equippable items.
+
+
 
 
 
