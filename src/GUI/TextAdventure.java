@@ -54,7 +54,7 @@ public class TextAdventure extends JFrame implements ActionListener {
         yesButton.addActionListener(this);
         noButton.addActionListener(this);
         // buttons ( dungeon )
-        lookButton = new JButton("Fight the next enemy");
+        lookButton = new JButton("Fight the enemy");
         exitButton = new JButton("Exit");
         lookButton.addActionListener(this);
         exitButton.addActionListener(this);
