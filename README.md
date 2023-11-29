@@ -14,6 +14,8 @@
     6.2.[Information Hiding](#information-hiding).  
 7.[Aggregation](#aggregation).  
 8.[Composition](#composition).  
+9.[Exception Handling](#exception-handling).  
+10.[Open Closed Principle](#open-closed-principle).  
 
 
 ### What is the Project for?
@@ -97,8 +99,41 @@ In this example, EventInterface is an interface and all events implement it, the
 this will make it possible for the variable event to hold all of them in TextAdventure class ( which is the main class ).
 this variable sets the current event of the game.
 ```java
-private EventInterface event;
+public class TextAdventure extends JFrame implements ActionListener {
+    private EventInterface event;
+    public void setEvent(EventInterface event){
+        this.event = event;
+
+    }
+}
+public class Dungeon implements EventInterface {
+    public static void trigger(TextAdventure game){
+        game.setEvent(new Dungeon(game.getPlayer(),game));
+        ....
+    }
+}
 ```
+In this example the use of EventInterface as the supertype of all events is showing the main functionality of polymorphism by inclusion, the attribute `event` has the supertype `EventInterface` which is an interface implemented by all the events,
+which eventually makes it possible for the attribute to hold different events.
+here is another example: 
+```java
+public class Player extends Characters implements CombatInterface{
+    public void equipItem(Equippable item){
+            item.handleEquip(this);
+    }
+}
+```
+In this example, player class has the method equipItem which takes in an `Equippable` type of object which is an interface implemented by all the equippable gear. This makes it possible for the method to be multi-functional and work for both armor and weapon.
+```java
+public class Fight extends JFrame implements ActionListener,EventInterface {
+    private final Enemy enemy;
+}
+```
+in this example, in the Fight class, there's an Enemy type variable which will take one enemy, all of them are subclasses of Enemy, for example Assassin and Goblin.
+## More on Subtyping
+Subtyping is when a class can be treated as an instance of a parent class or interface, this will allow reusability and some unique functionalities. its a form of implementing Inclusion polymorphism and one of its uses with the help of inheritance.
+we used Subtyping in the examples above, and also in subclasses of Enemy, Items etc where one variable is set to hold a super type which will eventually take a subclass type and work perfectly fine.
+
 ### Overloading
 This type of polymorphism make it possible to have multiple of the same method which takes different amount or type of parameters.
 ```java
@@ -131,8 +166,8 @@ public void equipItem(Equippable item){
 ## Inheritance
 Inheritance is a basic functionality of OOP, making it possible for classes to have children known as Subclasses or Childclasses and Parentclasses or Superclasses.
 It also enables subclasses to inherit methods and attributes, while having their own unique ones. This leads to better reusability and having a class hierarchy, enables subclasses to inherit
-the common features of the parent class and have their own new ones.
-This [Class Diagram](https://drive.google.com/file/d/1pREhIImt_T_pgyoBpxXL3ohMbrbgai41/view?usp=sharing) shows most of the classes and inheritances in our code.
+the common features of the parent class and have their own new ones.  
+This [Class Diagram](https://drive.google.com/file/d/1Zws1gt2rwfyQ4njG2bGJbZFmkZZ8_3jw/view?usp=sharing) shows most of the classes and inheritances in our code.
 Dotted lines mean the classes implement an interface and normal lines show inheritance.
 ### A brief overlook on the classes
 ``CharacterInfo``: this is the Package that holds Characters.
@@ -246,6 +281,54 @@ public class Player extends Characters implements CombatInterface{
 ```
 In this example, the only way you can get access to the Inventor class is through the public method "getInventory". and the Inventory object is created in the Player constrctor, which means the Inventory simply cant  
 function or be accessed without the existance of the Player class.
+
+## Exception Handling
+Exception handling in programming refers to the process of managing and responding to exceptions and unexpected events or errors that may disrupt the normal flow of a program's execution or cause a crash. In Java we use Try and Catch to handle exceptions.
+`Try` block is where we write the code that the exception may ( or may not ) occur, this gives the program the preparation to handle the issues that may occur.  
+`Catch` block is where the program jumps to if the exception happesn, which throws an error and usually should print it in the logs and then do a default behviour to continue the flow of the program.
+
+this is where we used this in our code: 
+```java
+public static Enemy generateEnemy(Player p, TextAdventure game) {
+        try {
+            Random random = new Random();
+            int num = random.nextInt(enemies.length);
+            String enemyName = enemies[num];
+
+            return switch (enemyName) {
+                case "Assassin" -> new Assassin(p.getLevel(), game);
+                case "DeathClaw" -> new DeathClaw(p.getLevel(), game);
+                case "Demogorgon" -> new Demogorgon(p.getLevel(), game);
+                case "Goblin" -> new Goblin(p.getLevel(), game);
+                case "HuntingTroll" -> new HuntingTroll(p.getLevel(), game);
+                case "Shadow" -> new Shadow(p.getLevel(), game);
+                default -> throw new IllegalStateException("Unexpected Value: " + enemyName);
+            };
+        } catch (Exception e) {
+
+            System.err.println("Error generating enemy: " + e.getMessage());
+            return new Goblin(p.getLevel(), game); // this is the default enemy in case of any issues in our program
+        }
+    }
+```
+The code catches the exception if it occurs, and jumps to the catch block, which prints the error message for debugging purposes and returns an enemy, we chose Goblin as our default enemy in case of any errors.
+## Open Closed Principle
+Open closed principle is one of the main OOP design principles which suggests that the entities ( classes, interfaces, objects, etc ) should be closed to modification but open to extension. which means that the behavior of a module could be extended without changing the soruce code but with added new classes/modules or behaviors. It allows better management of the code.
+In our code we tried to achieve this design by including some subclasses like Enemy subclasses and Interfaces like `Equippable`, `ItemType` and `Armor` and `Weapon` so that if we ever decide to add new types of items, we could add them by implementing those Interfaces or adding new classes for example, to add new itemtype called "Potions" we could just add the class, implement the ItemType and not Equippable since potions are not equippable items.
+```java
+public interface Equippable {
+        void handleEquip(Player p);
+        void handleUnequip(Player p,Inventory<Item<?>> inv);
+
+
+}
+public class Weapon extends Item<DamageGenericClass> implements Equippable{
+}
+public class Armor extends Item<HealthGenericClass> implements Equippable{}
+```
+Here you can see that we have 2 types of Equippable items rightnow, Armor and Weapon. both implement the equippable interface and if we wanted to add a 3rd one, for example helmet, we just need to create the class and implement the interface and there is no need to edited already written code.
+
+
 
 
 
