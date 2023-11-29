@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import CharacterInfo.Enemy;
 import CharacterInfo.Player;
@@ -53,7 +54,7 @@ public class TextAdventure extends JFrame implements ActionListener {
         yesButton.addActionListener(this);
         noButton.addActionListener(this);
         // buttons ( dungeon )
-        lookButton = new JButton("Find the next enemy");
+        lookButton = new JButton("Fight the next enemy");
         exitButton = new JButton("Exit");
         lookButton.addActionListener(this);
         exitButton.addActionListener(this);
@@ -207,6 +208,8 @@ public class TextAdventure extends JFrame implements ActionListener {
 
         TextAdventure TA = new TextAdventure();
         new NameSelection(TA);
+        Player p = new Player("Mamad",200,30,TA);
+
 
 
 

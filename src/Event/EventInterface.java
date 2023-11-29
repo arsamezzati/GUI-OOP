@@ -8,6 +8,8 @@ import java.util.Random;
 
 public interface EventInterface {
     public void start(Player p);
+    double x = 1.5;
+
 
 
 }

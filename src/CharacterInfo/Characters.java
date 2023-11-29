@@ -2,7 +2,7 @@ package CharacterInfo;
 
 import GUI.TextAdventure;
 
-public class Characters {
+public abstract class Characters {
     private TextAdventure game;
     private int level;
     public int getLevel(){
