@@ -52,7 +52,7 @@ public class InventoryBox implements ActionListener, ItemListener {
         inventoryFrame.add(buttonPanel, BorderLayout.SOUTH);
 
         inventoryFrame.setLocationRelativeTo(null);
-        inventoryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inventoryFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     private void addCheckbox(Item<?> item, JPanel panel, ArrayList<JCheckBox> checkboxList) {
