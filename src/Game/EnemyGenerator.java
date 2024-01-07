@@ -1,6 +1,5 @@
 package Game;
 
-import CharacterInfo.Enemies.*;
 import CharacterInfo.Enemy;
 import CharacterInfo.Player;
 import GUI.TextAdventure;
@@ -15,19 +14,12 @@ public class EnemyGenerator {
             int num = random.nextInt(enemies.length);
             String enemyName = enemies[num];
 
-            return switch (enemyName) {
-                case "Assassin" -> new Assassin(p.getLevel(), game);
-                case "DeathClaw" -> new DeathClaw(p.getLevel(), game);
-                case "Demogorgon" -> new Demogorgon(p.getLevel(), game);
-                case "Goblin" -> new Goblin(p.getLevel(), game);
-                case "HuntingTroll" -> new HuntingTroll(p.getLevel(), game);
-                case "Shadow" -> new Shadow(p.getLevel(), game);
-                default -> throw new IllegalStateException("Unexpected Value: " + enemyName);
-            };
+            Enemy enemy = new Enemy(game,enemyName, p.getLevel());
+            return enemy;
         } catch (Exception e) {
 
             System.err.println("Error generating enemy: " + e.getMessage());
-            return new Goblin(p.getLevel(), game); // this is the default enemy in case of any issues in our program
+            return new Enemy(game,"Goblin", p.getLevel()); // this is the default enemy in case of any issues in our program
         }
     }
 }

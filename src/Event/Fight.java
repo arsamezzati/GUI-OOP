@@ -1,7 +1,6 @@
 package Event;
 import CharacterInfo.*;
 
-import CharacterInfo.Enemies.Assassin;
 import GUI.CharacterLabel;
 import GUI.TextAdventure;
 import Game.EnemyGenerator;
