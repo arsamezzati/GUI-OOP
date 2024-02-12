@@ -15,7 +15,7 @@ public class Fight extends JFrame implements ActionListener,EventInterface {
     private final Enemy enemy;
     private JFrame fFrame;
     private JPanel fPanel;
-    private JButton attButton,spellButton,runButton;
+    private JButton attButton,runButton;
     private JTextArea combatText;
     private CharacterLabel characterInfoLabel;
 
@@ -36,7 +36,6 @@ public class Fight extends JFrame implements ActionListener,EventInterface {
 
         fPanel = new JPanel();
         attButton = new JButton("Attack");
-        spellButton = new JButton("Use Spell");
         runButton = new JButton("Run Away!");
         attButton.addActionListener(this);
         //spellButton.addActionListener(this);

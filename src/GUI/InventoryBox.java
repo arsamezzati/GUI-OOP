@@ -60,8 +60,6 @@ public class InventoryBox implements ActionListener, ItemListener {
         checkBox.addItemListener(this);
         checkboxList.add(checkBox);
         panel.add(checkBox);
-
-        // Assuming 'item' is of type Equippable or can be cast to it
         checkboxToItemMap.put(checkBox, (Equippable) item);
     }
     public void handleNewItem(Item<?> item){
@@ -101,12 +99,12 @@ public class InventoryBox implements ActionListener, ItemListener {
         ArrayList<Equippable> selectedItems = new ArrayList<>();
         for (JCheckBox checkBox : armorCheckboxes) {
             if (checkBox.isSelected()) {
-                selectedItems.add(getItemFromCheckbox(checkBox, true)); // Implement this method
+                selectedItems.add(getItemFromCheckbox(checkBox, true));
             }
         }
         for (JCheckBox checkBox : weaponCheckboxes) {
             if (checkBox.isSelected()) {
-                selectedItems.add(getItemFromCheckbox(checkBox, false)); // Implement this method
+                selectedItems.add(getItemFromCheckbox(checkBox, false));
             }
         }
         return selectedItems;

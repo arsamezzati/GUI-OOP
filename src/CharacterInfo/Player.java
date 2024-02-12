@@ -4,16 +4,10 @@ import GUI.TextAdventure;
 import Items.*;
 
 public class Player extends Characters implements CombatInterface{
-    public Player(String name, int health, int damage, TextAdventure game){
-        this.setName(name);
-        this.setAttackDamage(damage);
-        this.setMaxHealth(health);
-        this.setCurHealth(this.getMaxHealth());
-        this.setStatus(true);
-        this.setLevel(1);
+    public Player(String name, int health, int damage, TextAdventure game, int level){
+        super(name,health,damage,game,1);
         this.xp = 0;
         this.maxXp = 50;
-        this.setGame(game);
         this.inventory = new Inventory<Item<?>>(50,game);
 
     }
@@ -70,10 +64,7 @@ public class Player extends Characters implements CombatInterface{
         this.setAttackDamage(this.getAttackDamage()+5);
         this.setCurHealth(this.getMaxHealth());
     }
-    public void unequipItem(Equippable item){
-        item.handleUnequip(this,this.inventory);
 
-    }
     public void equipItem(Equippable item){
         item.handleEquip(this);
     }

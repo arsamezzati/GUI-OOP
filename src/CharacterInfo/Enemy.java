@@ -3,43 +3,11 @@ package CharacterInfo;
 import GUI.TextAdventure;
 
 public class Enemy extends Characters implements CombatInterface{
-    public Enemy(TextAdventure game , String name ,int  level ){
-        this.setStatus(true);
-        this.setGame(game);
-        switch (name){
-            case "Assassin" :
-                this.createAssassin(level);
-                break;
-            case "BloodQueen" :
-                this.createBloodQueen(level);
-                break;
-            case "DeathClaw" :
-                this.createDeathClaw(level);
-                break;
-            case "Demogorgon" :
-                this.createDemogorgon(level);
-                break;
-            case "Goblin" :
-                this.createGoblin(level);
-                break;
-            case "HuntingTroll" :
-                this.createHuntingTroll(level);
-                break;
-            case "LichKing" :
-                this.createLichKing(level);
-                break;
-            case "LordDarkar" :
-                this.createLordDarkar(level);
-                break;
-            case "Shadow" :
-                this.createShadow(level);
-                break;
-            case "Vecna" :
-                this.createVecna(level);
-                break;
-            default:
-                return;
-        }
+    public Enemy(String name,int health, int damage, TextAdventure game, int level){
+        super(name,health,damage,game,level);
+    }
+    private void createEnemyType(String name,int level){
+
     }
     private void createAssassin (int level){
         this.setName("Assassin");

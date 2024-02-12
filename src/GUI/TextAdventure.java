@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import CharacterInfo.Enemy;
 import CharacterInfo.Player;
@@ -14,7 +13,7 @@ public class TextAdventure extends JFrame implements ActionListener {
     private JTextArea textArea;
     private JFrame frame;
     private JPanel explorePanel,eventPanel,dungeonPanel;
-    private JButton exploreButton, quitButton,yesButton,noButton,lookButton,exitButton;
+    private JButton exploreButton, inventoryButton,yesButton,noButton,lookButton,exitButton;
     private Player player;
     public Player getPlayer(){
         return this.player;
@@ -45,9 +44,9 @@ public class TextAdventure extends JFrame implements ActionListener {
         textArea = new JTextArea();
         // buttons ( explore )
         exploreButton = new JButton("Explore");
-        quitButton = new JButton("Inventory");
+        inventoryButton = new JButton("Inventory");
         exploreButton.addActionListener(this);
-        quitButton.addActionListener(this);
+        inventoryButton.addActionListener(this);
         // buttons ( event )
         yesButton = new JButton("Yes");
         noButton = new JButton("No");
@@ -69,7 +68,7 @@ public class TextAdventure extends JFrame implements ActionListener {
 
         explorePanel = new JPanel();
         explorePanel.add(exploreButton);
-        explorePanel.add(quitButton);
+        explorePanel.add(inventoryButton);
         frame.add(explorePanel, BorderLayout.SOUTH);
 
         eventPanel = new JPanel();
@@ -121,7 +120,7 @@ public class TextAdventure extends JFrame implements ActionListener {
             characterInfoLabel.updateCharacterInfo();
             String result = EventGenerator.trigger(this);
             textArea.append("\n" + result);
-        } else if (source == quitButton) {
+        } else if (source == inventoryButton) {
             characterInfoLabel.updateCharacterInfo();
 
             this.player.getInventory().getInvGui().turnOnVisibility();
@@ -196,9 +195,6 @@ public class TextAdventure extends JFrame implements ActionListener {
     }
 
 
-    private Enemy peekNextEnemy() {
-        return ((Dungeon) this.event).getSideEnemyList().peek();
-    }
     public void handleLevelUp(){
         new LevelUp(this);
     }
@@ -208,7 +204,7 @@ public class TextAdventure extends JFrame implements ActionListener {
 
         TextAdventure TA = new TextAdventure();
         new NameSelection(TA);
-        Player p = new Player("Mamad",200,30,TA);
+
 
 
 
