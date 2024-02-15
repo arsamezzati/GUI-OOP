@@ -11,28 +11,13 @@ import Game.EnemyGenerator;
 
 public class Dungeon implements EventInterface {
     public Dungeon(Player p,TextAdventure game){
-        this.entryLevel = p.getLevel();
         this.game = game;
         this.player = p;
 
     }
-    private int entryLevel;
+
     private Player player;
     private TextAdventure game;
-    private boolean isRandom;
-    public int getEntryLevel(){
-        return this.entryLevel;
-    }
-    public void setEntryLevel(int amount){
-        this.entryLevel = amount;
-    }
-    private String Boss;
-    public String getBoss(){
-        return this.Boss;
-    }
-    public void setBoss(String name){
-        this.Boss = name;
-    }
     private String sideEnemy;
     public String getSideEnemy(){
         return this.sideEnemy;
@@ -40,14 +25,6 @@ public class Dungeon implements EventInterface {
     public void setSideEnemy(String name){
         this.sideEnemy = name;
     }
-    private String loot;
-    public String getLoot(){
-        return this.loot;
-    }
-    public void setLoot(String item){
-        this.loot = item;
-    }
-    private Queue<Enemy> enemyBossList = new LinkedList<>();
     private Queue<Enemy> sideEnemyList = new LinkedList<>();
     public Queue<Enemy> getSideEnemyList(){
         return this.sideEnemyList;
